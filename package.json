@@ -1,0 +1,13 @@
+{
+  "name": "neon-bootsrap",
+  "description": "An elemental stack for web apps",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~3.4.8",
+    "socket.io": "~0.9.16",
+    "http": "0.0.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}
