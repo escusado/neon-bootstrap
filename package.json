@@ -3,11 +3,16 @@
   "description": "An elemental stack for web apps",
   "version": "0.0.1",
   "dependencies": {
-    "express": "~3.4.8",
-    "socket.io": "~0.9.16",
-    "http": "0.0.0"
+    "express"   : "~3.4.8",
+    "socket.io" : "~0.9.16",
+    "http"      : "0.0.0",
+    "neon"      : "git://github.com/azendal/neon.git#add_stdlib_and_polish",
+    "tellurium" : "git://github.com/chubas/tellurium.git#npm_packaging"
   },
   "engines": {
     "node": ">= 0.10.0"
+  },
+  "scripts" : {
+    "copy_neon" : "node bin/copy_neon.js"
   }
 }

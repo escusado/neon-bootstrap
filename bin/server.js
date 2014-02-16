@@ -9,7 +9,7 @@ var express = require('express'),
     io      = require('socket.io').listen(server),
     fs      = require('fs');
 
-require('./vendor/neon.js');
+require('neon.js');
 
 Class('Server')({
     prototype : {
