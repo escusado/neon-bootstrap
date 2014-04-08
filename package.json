@@ -1,13 +1,13 @@
 {
   "name": "neon-bootsrap",
   "description": "An elemental stack for web apps",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
-    "express"   : "~3.4.8",
-    "socket.io" : "~0.9.16",
+    "express"   : "3.5.x",
+    "socket.io" : "0.9.x",
     "http"      : "0.0.0",
-    "neon"      : "git://github.com/azendal/neon.git#add_stdlib_and_polish",
-    "tellurium" : "git://github.com/chubas/tellurium.git#npm_packaging"
+    "neon"      : "2.0.0",
+    "tellurium" : "2.0.0"
   },
   "engines": {
     "node": ">= 0.10.0"
