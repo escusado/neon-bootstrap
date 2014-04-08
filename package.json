@@ -1,14 +1,14 @@
 {
   "name": "neon-bootsrap",
   "description": "An elemental stack for web apps",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
-    "express"   : "~3.4.8",
-    "socket.io" : "~0.9.16",
-    "http"      : "0.0.0",
-    "neon"      : "git://github.com/azendal/neon.git#add_stdlib_and_polish",
-    "tellurium" : "git://github.com/chubas/tellurium.git#npm_packaging"
+    "express"   : "3.5.x",
+    "socket.io" : "0.9.x",
+    "neon"      : "2.0.0",
+    "tellurium" : "2.0.0"
   },
+  "repository":"https://github.com/escusado/neon-bootstrap",
   "engines": {
     "node": ">= 0.10.0"
   },
