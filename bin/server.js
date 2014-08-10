@@ -60,7 +60,7 @@ Class('Server')({
         },
 
         _clientHello : function(socket, data){
-            data.message = 'Pa\'que? Así '+ data.message +' marico';
+            data.message = 'Server echo: '+ data.message;
             socket.emit('server:echo', data);
         },
 

@@ -2,12 +2,12 @@ Class('App').inherits(Widget)({
     prototype : {
         init : function(config){
             Widget.prototype.init.call(this, config);
-            console.log('Ontalespec?');
 
             this._bindEvents();
 
+            console.log('Send socket req...');
             this.socket.emit('client:hello', {
-                message: 'esta chido'
+                message: 'sup!'
             });
 
             return;
