@@ -13,6 +13,12 @@ or
 
 download the [zip](https://github.com/escusado/neon-bootstrap/zipball/master) file
 
+cd into the app folder:
+
+```bash
+cd neon-bootstrap
+```
+
 download dependencies:
 
 ```bash
