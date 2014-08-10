@@ -1,7 +1,10 @@
 #! /usr/local/bin/node
 
+//Config
 var serverPort = 3000;
 
+
+//Dependencies
 var express = require('express'),
     http    = require('http'),
     app     = express(),
@@ -9,8 +12,9 @@ var express = require('express'),
     io      = require('socket.io').listen(server),
     fs      = require('fs');
 
-require('neon.js');
+require('neon');
 
+//Application
 Class('Server')({
     prototype : {
         init : function (){
@@ -23,10 +27,10 @@ Class('Server')({
         },
 
         _configureApp : function(){
-            //body post size
-            app.use(express.bodyParser({ maxFieldsSize: '2 * 1024 * 1024 * 1024 ' }));
-            app.use(express.limit('50mb'));
+            //neon
+            app.use('/neon', express.static('node_modules/neon'));
 
+            //CORS
             app.use(function (req, res, next) {
                 res.header("Access-Control-Allow-Origin", "*");
                 res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -36,14 +40,12 @@ Class('Server')({
             //Static routes
             app.use('/assets', express.static('assets'));
 
-            app.use(app.router);
-
             return this;
         },
 
         _setRoutes : function(){
             app.get('/', function(req, res){
-                res.sendfile('views/index.html');
+                res.sendFile('views/index.html', {'root': __dirname + '/..'});
             });
 
             return this;
@@ -70,4 +72,5 @@ Class('Server')({
     }
 });
 
+//Startup
 var server = new Server();
