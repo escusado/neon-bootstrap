@@ -3,7 +3,6 @@
 //Config
 var serverPort = 3000;
 
-
 //Dependencies
 var express = require('express'),
     http    = require('http'),
