@@ -1,7 +1,7 @@
 #! /usr/local/bin/node
 
 //Config
-var serverPort = 3000;
+var serverPort = process.env.PORT || 3000;
 
 //Dependencies
 var express = require('express'),
@@ -10,9 +10,6 @@ var express = require('express'),
     server  = http.createServer(app),
     io      = require('socket.io').listen(server),
     fs      = require('fs');
-
-//Heroku
-app.set('port', (process.env.PORT || serverPort));
 
 require('neon');
 
