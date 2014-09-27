@@ -11,6 +11,9 @@ var express = require('express'),
     io      = require('socket.io').listen(server),
     fs      = require('fs');
 
+//Heroku
+app.set('port', (process.env.PORT || serverPort));
+
 require('neon');
 
 //Application
