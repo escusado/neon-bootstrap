@@ -1,0 +1,7 @@
+{
+  "name": "Neon Bootstrap",
+  "description": "An elemental stack for web apps",
+  "repository": "https://github.com/escusado/neon-bootstrap",
+  "logo": "https://raw.githubusercontent.com/escusado/neon-bootstrap/master/assets/img/neon-logo.png",
+  "keywords": ["node", "express", "static"]
+}
