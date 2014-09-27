@@ -2,6 +2,8 @@
 
 [neon.js](http://azendal.github.io/neon/) powered full stack web app platform.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy?template=https://github.com/escusado/neon-bootstrap/tree/master)
+
 #Usage
 
 clone this repo:
