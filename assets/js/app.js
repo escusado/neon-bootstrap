@@ -1,6 +1,13 @@
 Class('App').inherits(Widget)({
 
-  HTML : '<div><div class="sidebar"></div><div class="body"></div></div>',
+  HTML : '<div>\
+            <div class="sidebar"></div>\
+            <div class="body">\
+              <img src="/assets/img/neon-logo.png">\
+              <h1>Neon bootstrap</h1>\
+              <h2>v0.2b</h2>\
+            </div>\
+          </div>',
 
   ELEMENT_CLASS : 'app',
 
