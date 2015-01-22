@@ -2,40 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Neon Bootstrap</title>
-    <link rel="icon" type="image/gif" href="/assets/img/favicon.gif" />
+  <meta charset="UTF-8">
+  <title>Neon Bootstrap v0.2b</title>
+  <link rel="icon" type="image/gif" href="/assets/img/favicon.gif" />
 
-    <!-- css -->
-    <link href="/assets/css/vendor/elastic.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/vendor/elastic.print.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/neon/neon.js"></script>
+  <script src="/bower_components/neon/stdlib/custom_event.js"></script>
+  <script src="/bower_components/neon/stdlib/custom_event_support.js"></script>
+  <script src="/bower_components/neon/stdlib/node_support.js"></script>
+  <script src="/bower_components/neon/stdlib/widget.js"></script>
 
-    <!-- js -->
-    <script src="/socket.io/socket.io.js"></script>
+  <!-- js -->
+  <script src="/socket.io/socket.io.js"></script>
 
-    <script src="/neon/neon.js"></script>
-    <script src="/neon/stdlib/custom_event.js"></script>
-    <script src="/neon/stdlib/custom_event_support.js"></script>
-    <script src="/neon/stdlib/node_support.js"></script>
-    <script src="/neon/stdlib/bubbling_support.js"></script>
+  <script src="/assets/js/App.js"></script>
 
-    <script src="/assets/js/vendor/jquery-2.1.1.min.js"></script>
-    <script src="/assets/js/vendor/elastic.js"></script>
-    <script src="/assets/js/vendor/Widget.js"></script>
+  <script>
 
-    <script src="/assets/js/app.js"></script>
+    $(document).ready(function(){
+      var socket = io.connect();
+
+      window.app = new App({
+          socket : socket
+      });
+
+      window.app.render($('.app-container'));
+    });
+
+  </script>
+
 </head>
 
 <body>
-    <div class="unit wrapper">
-        <img src="/assets/img/neon-logo.png" alt="">
-        <h1>Neon bootstrap</h1>
-        <h2>v0.0.1</h2>
-    </div>
 
-    
+<div class="app-container"></div>
+
 
 </body>
 

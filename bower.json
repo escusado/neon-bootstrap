@@ -1,0 +1,14 @@
+{
+  "name": "Neon Bootstrap",
+  "description": "Neon stack basic web app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "neon": "*",
+    "jquery": "2.1.x"
+  }
+}

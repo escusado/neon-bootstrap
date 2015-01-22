@@ -25,6 +25,7 @@ download dependencies:
 
 ```bash
 npm install
+bower install
 ```
 
 all set, run the server:

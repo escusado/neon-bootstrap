@@ -1,31 +1,29 @@
 Class('App').inherits(Widget)({
-    prototype : {
-        init : function(config){
-            Widget.prototype.init.call(this, config);
 
-            this._bindEvents();
+  HTML : '<div><div class="sidebar"></div><div class="body"></div></div>',
 
-            console.log('Send socket req...');
-            this.socket.emit('client:hello', {
-                message: 'sup!'
-            });
+  ELEMENT_CLASS : 'app',
 
-            return;
-        },
+  prototype : {
+    init : function(config){
+      Widget.prototype.init.call(this, config);
 
-        _bindEvents : function(){
-            this.socket.on('server:echo', this._handleEcho.bind(this));
-        },
+      this._bindEvents();
 
-        _handleEcho : function(data){
-            console.log(data.message);
-        }
+      console.log('Send socket req...');
+      this.socket.emit('client:hello', {
+        message: 'sup!'
+      });
+
+      return;
+    },
+
+    _bindEvents : function(){
+      this.socket.on('server:echo', this._handleEcho.bind(this));
+    },
+
+    _handleEcho : function(data){
+      console.log(data.message);
     }
-});
-
-$(document).ready(function(){
-    var socket = io.connect();
-    window.app = new App({
-        socket : socket
-    });
+  }
 });

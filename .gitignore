@@ -15,4 +15,7 @@ npm-debug.log
 node_modules
 *.DS_Store*
 
-assets/js/vendor/neon
+.DS_Store
+node_modules
+bower_components
+.tmp
