@@ -16,6 +16,7 @@
     "socket.io": "^1.3.5"
   },
   "scripts": {
-    "start": "node bin/server.js -c config/server.json"
+    "start": "node bin/server.js -c config/server.json",
+    "rename_app" : "node bin/tasks/rename_app.js"
   }
 }

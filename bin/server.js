@@ -77,8 +77,7 @@ Class('Server')({
 
     _setSockets : function _setSockets(){
       this.io.on('connection', function socketHandler(socket) {
-        var appHandler,
-            clientId = socket.handshake.query.clientId;
+        var clientId = socket.handshake.query.clientId;
 
         if(this.clients[clientId]){
           console.log('\n\n\n----------------------------------------------------------\n> Reconnection for clientId: ', clientId);
