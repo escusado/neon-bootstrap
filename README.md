@@ -33,10 +33,10 @@ Edit config/server.json config/client.json
 ```
 client.config gets to frontend `App.js` as .config where you can consume it.
 
-Connection and reconnection is handler by the `NeBootstrapClient.js` Class.
+Connection and reconnection is handled by the `NeBootstrapClient.js` Class.
 A simple identity is created per client to handle reconnect and socket instance sync.
 
-[printed in the `config`](https://github.com/escusado/neon-bootstrap/blob/master/bin/server.js#L74) [template variable on `index.html`](https://github.com/escusado/neon-bootstrap/blob/master/views/index.html#L26)
+[printed in the `config`](https://github.com/escusado/neon-bootstrap/blob/master/bin/server.js#L74)  template variable [on `index.html`](https://github.com/escusado/neon-bootstrap/blob/master/views/index.html#L26)
 
 ## Run:
 ```bash
