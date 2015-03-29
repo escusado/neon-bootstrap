@@ -41,6 +41,7 @@ Class('AppRenamer')({
       console.log('> Camelized name: ', this.camelizedName);
       this._loadFiles();
       this._replaceContent();
+      this._renameFiles();
     },
 
     _getGitData : function _getGitData(cb){
@@ -81,6 +82,7 @@ Class('AppRenamer')({
       this._processAppHandlerJs();
       this._processAppJs();
       this._processIndex();
+      console.log('> Content updated');
     },
 
     _processPackageJson : function _processPackageJson(){
@@ -110,12 +112,18 @@ Class('AppRenamer')({
 
     _processAppJs : function _processAppJs(){
       this.files['public/js/app/App.js'] = this.files['public/js/app/App.js'].replace(/App/g, this.camelizedName);
-      console.log('>', this.files['public/js/app/App.js']);
     },
 
     _processIndex : function _processIndex(){
       this.files['views/index.html'] = this.files['views/index.html'].replace(/App/g, this.camelizedName);
-      console.log('>', this.files['views/index.html']);
+    },
+
+    _renameFiles : function _renameFiles(){
+      Object.keys(this.renameTasks).forEach(function(originalFilename){
+        var newName = this.renameTasks[originalFilename];
+        fs.renameFileSync(originalFilename, newName);
+        console.log('> Renamed %s to %s', originalFilename, newName);
+      }, this);
     }
 
   }
