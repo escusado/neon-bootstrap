@@ -28,6 +28,39 @@ $ npm install
 $ bower install
 ```
 
+## Rename project (optional)
+It will rename all the info and code strings to the projectname.
+
+ej.
+
+
+```javascript
+//instead of default
+
+window.app = new App();
+
+//will transform to
+
+window.app = new ProjectName()
+
+//It will rename also:
+'lib/app/AppHandler.js' to 'lib/app/ProjectNameHandler.js'
+'public/js/app/App.js'  to 'public/js/app/ProjectName.js'
+
+```
+
+```
+npm run rename_app
+```
+
+or
+
+```
+npm run rename_app -- -n project-name-separated-by-hiphens
+```
+
+If no nanme is passed name and repo will be grabbed from the .git folder
+
 ## Configs:
 ```
 Edit config/server.json config/client.json
