@@ -71,8 +71,6 @@ Class('AppRenamer')({
         'lib/app/AppHandler.js' : 'lib/app/'+this.camelizedName+'Handler.js',
         'public/js/app/App.js'  : 'public/js/app/'+this.camelizedName+'.js',
       };
-
-      // console.log('files: ', this.files);
     },
 
     _replaceContent : function _replaceContent(){
@@ -88,15 +86,15 @@ Class('AppRenamer')({
 
     _writeFiles : function _writeFiles(){
       fs.writeFileSync('package.json', JSON.stringify(this.files['package.json'], null, 4));
+      delete this.files['package.json'];
       console.log('> File Written: package.json');
       fs.writeFileSync('bower.json', JSON.stringify(this.files['bower.json'], null, 4));
+      delete this.files['bower.json'];
       console.log('> File Written: bower.json');
 
-      this.files.unshift().unshift();
-
-      this.files.forEach(function(filename){
-        // fs.writeFileSync(filename, this.files[filename]);
-        console.log('> File Written: ', filename);
+      Object.keys(this.files).forEach(function(filename){
+        fs.writeFileSync(filename, this.files[filename]);
+        console.log('> File Written:', filename);
       }, this);
     },
 
