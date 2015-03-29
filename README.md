@@ -1,5 +1,9 @@
 # Neon Bootstrap v2
 
+Single page `socket.io` events `Handlers` library collection.
+
+For Server Framework check [NeoNode](https://github.com/sgarza/Neonode)
+
 > Important changes: new Event API (Wdiget events <-> backend handler) system
 
 New handler pattern added
@@ -87,3 +91,6 @@ npm start
 - Added rename project feature task (changes relevant strings and filenames to replace 'neon-bootstrap' to 'project-name') defailts to .git contents
 - New Event API philosophy (frontend `Widgets`, emit events (socket.io) to an `AppHandler`, that contains all handlers for them).
 - Client disconnect management through the `.reconnect(<new socket>)` method.
+
+# TODO
+- Build system a'la neonode global tool and an initter
