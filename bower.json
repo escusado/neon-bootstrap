@@ -8,7 +8,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "neon": "*",
-    "jquery": "2.1.x"
+    "neon": "git@github.com:escusado/neon.git"
   }
 }

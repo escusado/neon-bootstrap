@@ -14,14 +14,14 @@ body,
   flex-direction: row wrap;
 }
 
-.app .sidebar{
+.app .sidebar-container{
   width: 200px;
 
   background-color: #EBEBEB;
   box-shadow: inset -1px 0 0 0 rgba(0,0,0, 0.4);
 }
 
-.app .body{
+.app .body-container{
   flex: 1;
 
   background-color: #EEEEEE;

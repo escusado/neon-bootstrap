@@ -4,32 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Neon Bootstrap v0.2b</title>
-  <link rel="icon" type="image/gif" href="/assets/img/favicon.gif" />
+  <link rel="icon" type="image/gif" href="/public/img/favicon.gif" />
 
-  <link rel="stylesheet" href="/assets/css/style.css">
-
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/bower_components/neon/neon.js"></script>
-  <script src="/bower_components/neon/stdlib/custom_event.js"></script>
-  <script src="/bower_components/neon/stdlib/custom_event_support.js"></script>
-  <script src="/bower_components/neon/stdlib/node_support.js"></script>
-  <script src="/bower_components/neon/stdlib/widget.js"></script>
-
-  <!-- js -->
+  <!-- Deps -->
   <script src="/socket.io/socket.io.js"></script>
+  <script src="/neon/neon.js"></script>
+  <script src="/neon/stdlib/custom_event.js"></script>
+  <script src="/neon/stdlib/custom_event_support.js"></script>
+  <script src="/neon/stdlib/node_support.js"></script>
+  <script src="/neon/stdlib/widget.js"></script>
+  <!-- bootstrap -->
+  <script src="/js/neon-bootstrap/Client.js"></script>
 
-  <script src="/assets/js/App.js"></script>
+  <!-- App -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app/App.js"></script>
 
   <script>
+    //Config
+    window.client = new Client({
+        config : JSON.parse('{{client_config}}')
+    });
 
-    $(document).ready(function(){
-      var socket = io.connect();
+    client.setup();
 
+    if (document.readyState != 'loading'){
+        client.start();
+    } else {
+        document.addEventListener('DOMContentLoaded', client.start);
+    }
+
+    client.bind('connected', function(){
       window.app = new App({
-          socket : socket
-      });
 
-      window.app.render($('.app-container'));
+      });
+      app.setup();
+      app.render(document.body);
     });
 
   </script>
@@ -37,8 +47,6 @@
 </head>
 
 <body>
-
-<div class="app-container"></div>
 
 
 </body>
