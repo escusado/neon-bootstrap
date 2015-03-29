@@ -77,7 +77,7 @@ $ npm run rename_app
 > Getting name from git repo...
 > Git repo:  { name: 'my-new-project',
   repository: 'git@github.us:escusado/my-new-project.git' }
-> Camelized name:  Telemetry
+> Camelized name:  MyNewProject
 > Content updated
 > File Written: package.json
 > File Written: bower.json
@@ -86,8 +86,8 @@ $ npm run rename_app
 > File Written: lib/app/AppHandler.js
 > File Written: public/js/app/App.js
 > File Written: views/index.html
-> Renamed lib/app/AppHandler.js to lib/app/TelemetryHandler.js
-> Renamed public/js/app/App.js to public/js/app/Telemetry.js
+> Renamed lib/app/AppHandler.js to lib/app/MyNewProjectHandler.js
+> Renamed public/js/app/App.js to public/js/app/MyNewProject.js
 > Project uccesfully renamed to: my-new-project
 ```
 
