@@ -43,7 +43,7 @@ Class('AppRenamer')({
       this._replaceContent();
       this._writeFiles();
       this._renameFiles();
-      console.log('> Project succesfully renamed to:', this.name);
+      console.log('> Project uccesfully renamed to:', this.name);
     },
 
     _getGitData : function _getGitData(cb){
@@ -135,7 +135,7 @@ Class('AppRenamer')({
     _renameFiles : function _renameFiles(){
       Object.keys(this.renameTasks).forEach(function(originalFilename){
         var newName = this.renameTasks[originalFilename];
-        fs.renameFileSync(originalFilename, newName);
+        fs.renameSync(originalFilename, newName);
         console.log('> Renamed %s to %s', originalFilename, newName);
       }, this);
     }
