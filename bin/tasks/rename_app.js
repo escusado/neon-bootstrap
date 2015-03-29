@@ -43,6 +43,7 @@ Class('AppRenamer')({
       this._replaceContent();
       this._writeFiles();
       this._renameFiles();
+      console.log('> Project succesfully renamed to:', this.name);
     },
 
     _getGitData : function _getGitData(cb){
