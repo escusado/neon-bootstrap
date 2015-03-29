@@ -3,6 +3,10 @@ Class('App').inherits(Widget)({
   ELEMENT_CLASS : 'app',
 
   prototype : {
+
+    socket : null,
+    config : null,
+
     init : function(config){
       Widget.prototype.init.call(this, config);
 
@@ -15,8 +19,6 @@ Class('App').inherits(Widget)({
         name : 'body',
         className : 'body-container'
       }));
-
-      console.log('Neonbootstrapped!');
     },
 
     setup : function setup(){
@@ -25,19 +27,20 @@ Class('App').inherits(Widget)({
 
       this._bindEvents();
 
-      this.client.emit('new_session_intent', {
+      this.socket.emit('app_handshake_intent', {
         data : {
-          clientId : this.client.config.clientId
+          clientId : this.config.clientId
         }
       });
     },
 
     _bindEvents : function _bindEvents(){
-      this.client.once('new_session', this._handlerNewSession.bind(this));
+      this.socket.once('app_acknowledge-'+this.config.clientId, this._handlerAppAcknowledge.bind(this));
     },
 
-    _handlerNewSession : function _handlerNewSession(ev){
+    _handlerAppAcknowledge : function _handlerAppAcknowledge(ev){
       console.log('AppHandler session acknowledge', ev.data);
+      console.log('Neonbootstrapped!');
     }
   }
 });

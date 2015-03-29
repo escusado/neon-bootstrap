@@ -14,7 +14,7 @@
   <script src="/neon/stdlib/node_support.js"></script>
   <script src="/neon/stdlib/widget.js"></script>
   <!-- bootstrap -->
-  <script src="/js/neon-bootstrap/Client.js"></script>
+  <script src="/js/neon-bootstrap/NeBootstrapClient.js"></script>
 
   <!-- App -->
   <link rel="stylesheet" href="/css/style.css">
@@ -22,21 +22,22 @@
 
   <script>
     //Config
-    window.client = new Client({
+    window.neBootstrapClient = new NeBootstrapClient({
         config : JSON.parse('{{client_config}}')
     });
 
-    client.setup();
+    neBootstrapClient.setup();
 
     if (document.readyState != 'loading'){
-        client.start();
+        neBootstrapClient.start();
     } else {
-        document.addEventListener('DOMContentLoaded', client.start);
+        document.addEventListener('DOMContentLoaded', neBootstrapClient.start);
     }
 
-    client.bind('connected', function(socket){
+    neBootstrapClient.bind('connected', function(ev){
       window.app = new App({
-        client : client
+        socket : ev.data.socket,
+        config : ev.data.config
       });
       app.setup();
       app.render(document.body);

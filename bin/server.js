@@ -11,7 +11,6 @@ var neon = require('neon'),
     commander = require('commander'),
     uuid = require('node-uuid'),
 
-    ClientHandler = require('../lib/neon-bootstrap/ClientHandler.js'),
     AppHandler = require('../lib/app/AppHandler.js');
 
 //Config
@@ -36,7 +35,7 @@ Class('Server')({
         this[property] = config[property];
       }, this);
 
-      this.clients = [];
+      this.clients = {};
 
       return true;
     },
@@ -83,21 +82,23 @@ Class('Server')({
 
         if(this.clients[clientId]){
           console.log('\n\n\n----------------------------------------------------------\n> Reconnection for clientId: ', clientId);
-          this.clients[clientId].reconnect(socket);
+          this.clients[clientId].reconnect({
+            socket : socket
+          });
         }else{
           console.log('\n\n\n----------------------------------------------------------\n> New client for clientId: ', clientId);
-          this.clients[clientId] = new ClientHandler({
+          this.clients[clientId] = new AppHandler({
             socket : socket,
             clientId : clientId
           });
+          this.clients[clientId].setup();
         }
 
-        appHandler = new AppHandler({
-          client : this.clients[clientId]
-        });
-
-        this.clients[clientId].bind('disconnected', function(){
-          delete this.clients[clientId];
+        socket.on('disconnect', function(){
+          this.clients[clientId].destroy(function(){
+            console.log('Destroyed handler for client: %s \n', clientId);
+            delete this.clients[clientId];
+          }.bind(this));
         }.bind(this));
 
       }.bind(this));
