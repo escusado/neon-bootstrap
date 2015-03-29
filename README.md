@@ -67,6 +67,30 @@ npm run rename_app -- -n project-name-separated-by-hiphens
 
 If no nanme is passed name and repo will be grabbed from the .git folder
 
+
+```bash
+$ npm run rename_app
+
+> neon-bootsrap@0.1.0 rename_app /Users/Toily/code/my-new-project
+> node bin/tasks/rename_app.js
+
+> Getting name from git repo...
+> Git repo:  { name: 'my-new-project',
+  repository: 'git@github.us:escusado/my-new-project.git' }
+> Camelized name:  Telemetry
+> Content updated
+> File Written: package.json
+> File Written: bower.json
+> File Written: README.md
+> File Written: bin/server.js
+> File Written: lib/app/AppHandler.js
+> File Written: public/js/app/App.js
+> File Written: views/index.html
+> Renamed lib/app/AppHandler.js to lib/app/TelemetryHandler.js
+> Renamed public/js/app/App.js to public/js/app/Telemetry.js
+> Project uccesfully renamed to: my-new-project
+```
+
 ## Configs:
 ```
 Edit config/server.json config/client.json
