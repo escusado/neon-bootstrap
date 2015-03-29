@@ -1,4 +1,6 @@
-# telemetry
+# Neon Bootstrap v2
+
+> Important changes: new Event API (Wdiget events <-> backend handler) system
 
 New handler pattern added
 
