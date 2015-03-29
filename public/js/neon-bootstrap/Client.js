@@ -22,6 +22,29 @@ Class('Client').includes(CustomEventSupport)({
       this._bindEvents();
     },
 
+    emit : function emit(ev, data){
+      var event = {
+        type : ev,
+        data : data
+      };
+      this.socket.emit(this.config.clientId, event);
+    },
+
+    on : function on(ev, cb){
+      this.bind(ev, cb);
+      this.socket.on(this.config.clientId, function(ev){
+        this.dispatch(ev.type, ev.data);
+        if(cb.__once){
+          this.unbind(ev, cb);
+        }
+      }.bind(this));
+    },
+
+    once : function once(ev, cb){
+      cb.__once = true;
+      this.on(ev, cb);
+    },
+
     _bindEvents : function _bindEvents(){
       this.socket.on('connect', this._handleConnect.bind(this));
       this.socket.on('disconnect', this._handleDisconnect.bind(this));

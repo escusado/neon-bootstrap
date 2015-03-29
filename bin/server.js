@@ -1,7 +1,8 @@
 #! /usr/local/bin/node
 
 //Deps
-var neon = require('neon');
+var neon = require('neon'),
+    neonStdLib = require('neon/stdlib'),
     fs = require('fs'),
     path = require('path'),
     Express = require('express'),
@@ -10,7 +11,8 @@ var neon = require('neon');
     commander = require('commander'),
     uuid = require('node-uuid'),
 
-    ClientHandler = require('../lib/neon-bootstrap/ClientHandler.js');
+    ClientHandler = require('../lib/neon-bootstrap/ClientHandler.js'),
+    AppHandler = require('../lib/app/AppHandler.js');
 
 //Config
 var config = commander.option('-c, --config <config>', 'User config').parse(process.argv).config;
@@ -26,7 +28,7 @@ Class('Server')({
 
     viewsFolder : null,
 
-    _clients : null,
+    clients : null,
 
     init : function init(config){
 
@@ -34,7 +36,7 @@ Class('Server')({
         this[property] = config[property];
       }, this);
 
-      this._clients = [];
+      this.clients = [];
 
       return true;
     },
@@ -56,7 +58,6 @@ Class('Server')({
       this.io      = Socket_io(this.server);
 
       //Static routes
-      // this.app.use('/bower_components', this.server.static('bower_components'));
       this.app.use(Express.static('bower_components'));
       this.app.use(Express.static('public'));
     },
@@ -77,17 +78,27 @@ Class('Server')({
 
     _setSockets : function _setSockets(){
       this.io.on('connection', function socketHandler(socket) {
-        var clientId = socket.handshake.query.clientId;
+        var appHandler,
+            clientId = socket.handshake.query.clientId;
 
-        if(this._clients[clientId]){
+        if(this.clients[clientId]){
           console.log('\n\n\n----------------------------------------------------------\n> Reconnection for clientId: ', clientId);
-          this._clients[clientId].reconnect(socket);
+          this.clients[clientId].reconnect(socket);
         }else{
           console.log('\n\n\n----------------------------------------------------------\n> New client for clientId: ', clientId);
-          this._clients[clientId] = new ClientHandler({
-            socket : socket
+          this.clients[clientId] = new ClientHandler({
+            socket : socket,
+            clientId : clientId
           });
         }
+
+        appHandler = new AppHandler({
+          client : this.clients[clientId]
+        });
+
+        this.clients[clientId].bind('disconnected', function(){
+          delete this.clients[clientId];
+        }.bind(this));
 
       }.bind(this));
     }

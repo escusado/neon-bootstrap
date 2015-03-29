@@ -34,9 +34,9 @@
         document.addEventListener('DOMContentLoaded', client.start);
     }
 
-    client.bind('connected', function(){
+    client.bind('connected', function(socket){
       window.app = new App({
-
+        client : client
       });
       app.setup();
       app.render(document.body);

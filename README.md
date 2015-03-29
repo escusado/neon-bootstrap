@@ -1,35 +1,12 @@
 # Neon Bootstrap
 
-[neon.js](http://azendal.github.io/neon/) powered full stack web app platform.
+New handler pattern added
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy?template=https://github.com/escusado/neon-bootstrap/tree/master)
+[Express] "/" > index.html ([with config object printed](https://github.com/escusado/neon-bootstrap/blob/master/views/index.html#L26))
+[Socket.io client] connect + clientId > `server.clients[clientId] = new ClientHandler({socket: socket});`
 
-#Usage
+Full evented api
 
-clone this repo:
+Recommend
 
-```bash
-git clone git@github.com:escusado/neon-bootstrap.git
-```
-or
-
-download the [zip](https://github.com/escusado/neon-bootstrap/zipball/master) file
-
-cd into the app folder:
-
-```bash
-cd neon-bootstrap
-```
-
-download dependencies:
-
-```bash
-npm install
-bower install
-```
-
-all set, run the server:
-
-```bash
-node bin/server.js
-```
+# Usage
