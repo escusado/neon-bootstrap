@@ -82,7 +82,7 @@ npm start
 
 # [2015-03-29] : Update
 
-- New jQueryless Widget (based on [Horoor's one](https://github.com/noeldelgado/shadowlord/blob/23f8799f82d259e0354dd58f36bbcbc6d608da02/dist/js/app.js#L902-L1193))
+- New jQueryless Widget (based on the [Horror one](https://github.com/noeldelgado/shadowlord/blob/23f8799f82d259e0354dd58f36bbcbc6d608da02/dist/js/app.js#L902-L1193))
 - Added start script `npm start`
 - Added rename project feature task (changes relevant strings and filenames to replace 'neon-bootstrap' to 'project-name') defailts to .git contents
 - New Event API philosophy (frontend `Widgets`, emit events (socket.io) to an `AppHandler`, that contains all handlers for them).
