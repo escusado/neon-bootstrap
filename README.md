@@ -1,6 +1,6 @@
 # Neon Bootstrap v2
 
-Single page `socket.io` events `Handlers` library collection.
+Single page web app framework, `scoket.io` events <> Event Handlers.
 
 For Server Framework check [NeoNode](https://github.com/sgarza/Neonode)
 
