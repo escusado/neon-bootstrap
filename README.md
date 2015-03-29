@@ -1,4 +1,4 @@
-# Neon Bootstrap
+# telemetry
 
 New handler pattern added
 
@@ -16,7 +16,7 @@ Every App will have a front-end client and an AppHandler on the back
 
 ## Clone:
 ```bash
-$ git clone git@github.com:escusado/neon-bootstrap.git
+$ git clone git@bitbucket.org:escusado/telemetry.git
 ```
 
 ## Deps:
@@ -76,3 +76,12 @@ A simple identity is created per client to handle reconnect and socket instance 
 ```bash
 npm start
 ```
+
+
+# [2015-03-29] : Update
+
+- New jQueryless Widget
+- Added start script `npm start`
+- Added rename project feature task (changes relevant strings and filenames to replace 'neon-bootstrap' to 'project-name') defailts to .git contents
+- New Event API philosophy (frontend `Widgets`, emit events (socket.io) to an `AppHandler`, that contains all handlers for them).
+- Client disconnect management through the `.reconnect(<new socket>)` method.
