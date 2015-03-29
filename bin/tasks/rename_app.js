@@ -41,6 +41,7 @@ Class('AppRenamer')({
       console.log('> Camelized name: ', this.camelizedName);
       this._loadFiles();
       this._replaceContent();
+      this._writeFiles();
       this._renameFiles();
     },
 
@@ -83,6 +84,20 @@ Class('AppRenamer')({
       this._processAppJs();
       this._processIndex();
       console.log('> Content updated');
+    },
+
+    _writeFiles : function _writeFiles(){
+      fs.writeFileSync('package.json', JSON.stringify(this.files['package.json'], null, 4));
+      console.log('> File Written: package.json');
+      fs.writeFileSync('bower.json', JSON.stringify(this.files['bower.json'], null, 4));
+      console.log('> File Written: bower.json');
+
+      this.files.unshift().unshift();
+
+      this.files.forEach(function(filename){
+        // fs.writeFileSync(filename, this.files[filename]);
+        console.log('> File Written: ', filename);
+      }, this);
     },
 
     _processPackageJson : function _processPackageJson(){
